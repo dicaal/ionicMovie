@@ -51,16 +51,16 @@
 
 
 
-    <ion-searchbar (ionInput)="getMovie()">Go</ion-searchbar>
+    <ion-searchbar (ionInput)="getMovie($event)">Go</ion-searchbar>
 <ion-list>
-  <ion-item *ngFor="let movie of MoviesProvidersProvider.currentSearch">
-    <!-- {{ item }} -->
+  <ion-item *ngFor="let movie of currentSearch">
+    {{ item }}
     <li>Title: {{movie.title}}</li>
-    <li>scorre: {{movie.id}}</li>
+    <li>score: {{movie.id}}</li>
   </ion-item>
 </ion-list>
 
-  <img class = car-img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}">  
+  <!-- <img class = car-img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}">   -->
   
   <h2>Welcome to Movie Search!</h2>
   

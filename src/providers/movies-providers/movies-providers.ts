@@ -1,4 +1,5 @@
 import { HttpClient  } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 /*
@@ -20,16 +21,10 @@ export class MoviesProvidersProvider {
     console.log('Hello MoviesProvidersProvider Provider');
   }
 
-  movieSearch: any;
-  currentSearch: any;
+
 
   getMovieData (title) {
-    
     let urlRequest = this.base_url + this.apikey + this.query + title;
-    return this.http.get(urlRequest)
-    .subscribe(data =>{
-     this.currentSearch = data.results
-     console.log("currentSearch", this.currentSearch)
-    })
+    return this.http.get(urlRequest);
 }
 }

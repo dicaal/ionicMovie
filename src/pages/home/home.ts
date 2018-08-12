@@ -13,14 +13,27 @@ export class HomePage {
   id: any;
   movies;
 
+  movieSearch: any;
+  currentSearch: any[] = [];
   constructor(public navCtrl: NavController, private moviesProviders: MoviesProvidersProvider ) {
 
   }
 
 
-  getMovie(){
-    
-    this.moviesProviders.getMovieData(this.title);
+  getMovie(ev: any){
+    const val = ev.target.value;
+    this.moviesProviders.getMovieData(val).subscribe(
+      (data) =>{
+      console.log(data);
+      console.log(data.results[1].title);
+      this.currentSearch = [];
+      if(data.results.length > 10){
+        for(let i = 0; i < 10; i++){
+          this.currentSearch.push(data.results[i]);
+        }
+      }
+     console.log("currentSearch", this.currentSearch);
+    })
   }
   
 }
